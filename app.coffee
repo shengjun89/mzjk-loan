@@ -575,12 +575,12 @@ listheadTitle = new TextLayer
 	x: Align.left(40*n)
 	y: Align.center
 	text: "月还款额"
-	fontSize: 28*n
+	fontSize: 30*n
 	fontFamily: "PingFang SC"
-	fontWeight: 300
+	fontWeight: 600
 	letterSpacing: -0.6
 	textAlign: "left"
-	color: "#212121"
+	color: "rgba(80,80,80,1)"
 
 godetail = new TextLayer
 	parent: listhead
