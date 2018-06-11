@@ -795,7 +795,7 @@ for i in [0...PeriodsArr.length]
 scroll.content.on "change:x", ->
 	list01_value.text = num.text
 	list01_value.x = Align.right
-	list03_value.text = (((num.text/PeriodsNum)*(1+[parseFloat(costRate)*0.01]))/6).toFixed(2)
+	list03_value.text = (num.text*1.2388/PeriodsNum).toFixed(2)
 	list03_value.x = Align.right
 	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list04_value.x = Align.right
@@ -809,8 +809,10 @@ PeriodsBtnArr[0].onTouchStart (event, layer) ->
 
 	list02_value.text = (23.88-(num.text*0.0001)-PeriodsNum*0.01).toFixed(2)+"%"
 	list02_value.x = Align.right
+	list03_value.text = (num.text*1.2388/PeriodsNum).toFixed(2)
 	list03_name.text = "第1-5期"
 	list04_name.text = "第6-12期"
+	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list02_value.x = Align.right
 	list03_value.x = Align.right
 	list04_value.x = Align.right
@@ -819,8 +821,10 @@ PeriodsBtnArr[1].onTouchStart (event, layer) ->
 	
 	list02_value.text = (23.88-(num.text*0.0001)-PeriodsNum*0.01).toFixed(2)+"%"
 	list02_value.x = Align.right
+	list03_value.text = (num.text*1.2388/PeriodsNum).toFixed(2)
 	list03_name.text = "第1-5期"
 	list04_name.text = "第6-24期"
+	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list02_value.x = Align.right
 	list03_value.x = Align.right
 	list04_value.x = Align.right
@@ -828,8 +832,10 @@ PeriodsBtnArr[1].onTouchStart (event, layer) ->
 PeriodsBtnArr[2].onTouchStart (event, layer) ->
 	list02_value.text = (23.88-(num.text*0.0001)-PeriodsNum*0.01).toFixed(2)+"%"
 	list02_value.x = Align.right
+	list03_value.text = (num.text*1.2388/PeriodsNum).toFixed(2)
 	list03_name.text = "第1-6期"
 	list04_name.text = "第7-36期"
+	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list02_value.x = Align.right
 	list03_value.x = Align.right
 	list04_value.x = Align.right		
