@@ -489,7 +489,7 @@ toast = new Layer
 	width: Screen.width
 	height: 56*n
 	backgroundColor: null
-	x: Align.left(-340*n)
+	x: Align.left(-360*n)
 	y: -56*n
 	scale: 0.2
 	opacity: 0
