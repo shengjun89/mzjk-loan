@@ -93,6 +93,8 @@ for i in [0...PeriodsArr.length]
 		textAlign: "center"
 		color: "rgba(117,117,117,1)"
 	
+	
+	
 	PeriodsBtnArr.push(btn)
 
 	
@@ -106,7 +108,7 @@ for i in [0...PeriodsArr.length]
 			PeriodsBtnArr[i].children[0].shadowColor = "null"
 
 			PeriodsBtnArr[i].children[1].color = "rgba(117,117,117,1)"
-		
+# 		print parseInt(@children[1].text)
 		@children[0].borderWidth = 0
 		@children[0].backgroundColor = "#ff6361"
 		@children[1].color = "#FFF"
@@ -623,7 +625,7 @@ list03_name = new TextLayer
 	parent: list03
 	x: Align.left
 	y: Align.center
-	text: "第1-5期"
+	text: "第1-6期"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
@@ -657,7 +659,7 @@ list04_name = new TextLayer
 	parent: list04
 	x: Align.left
 	y: Align.center
-	text: "第6-12期"
+	text: "第7-36期"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
@@ -772,10 +774,29 @@ sheetClose.onTouchMove (event, layer) ->
 scroll.content.on "change:x", ->
 	list01_value.text = (num.text*[1-parseFloat(costRate)*0.01]).toFixed(2)
 	list01_value.x = Align.right
+	list03_value.text = ((num.text/36+num.text*[parseFloat(costRate)*0.01])/4).toFixed(2)
+	list03_value.x = Align.right
+	list04_value.text = ((num.text/36)).toFixed(2)
+	list04_value.x = Align.right
 # 	num.text = 1000-Math.round((scroll.content.x-187*n)/limb.width*10)*100
 # 	num.x = Align.center
 # 	# 如果当前金额大于获取的额度范围则等于最大额度
 # 	if Number(num.text)>maxNum then num.text=maxNum
+# for i in [0...PeriodsArr.length]
+# 	PeriodsBtnArr[i].onTouchStart (event, layer) ->
+# 		print parseInt(@children[1].text)
+
+PeriodsBtnArr[0].onTouchStart (event, layer) ->
+	list03_name.text = "第1-5期"
+	list04_name.text = "第6-12期"
+	
+PeriodsBtnArr[1].onTouchStart (event, layer) ->
+	list03_name.text = "第1-5期"
+	list04_name.text = "第6-24期"
+	
+PeriodsBtnArr[2].onTouchStart (event, layer) ->
+	list03_name.text = "第1-6期"
+	list04_name.text = "第7-36期"		
 
 
 

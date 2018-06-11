@@ -93,6 +93,8 @@ for i in [0...PeriodsArr.length]
 		textAlign: "center"
 		color: "rgba(117,117,117,1)"
 	
+	
+	
 	PeriodsBtnArr.push(btn)
 
 	
@@ -106,7 +108,7 @@ for i in [0...PeriodsArr.length]
 			PeriodsBtnArr[i].children[0].shadowColor = "null"
 
 			PeriodsBtnArr[i].children[1].color = "rgba(117,117,117,1)"
-		
+# 		print parseInt(@children[1].text)
 		@children[0].borderWidth = 0
 		@children[0].backgroundColor = "#ff6361"
 		@children[1].color = "#FFF"
@@ -140,7 +142,7 @@ topBg = new Layer
 num_title = new TextLayer
 	x: Align.center
 	y: 168*n
-	text: "确认借款金额(元)"
+	text: "确认借多少(元)"
 	fontSize: 32*n
 	fontFamily: "PingFang SC"
 	fontWeight: 300
@@ -286,6 +288,7 @@ overlay = new Layer
 	backgroundColor: "rgba(0,0,0,0.6)"
 	z: 4
 	opacity: 0
+	y: 2
 	
 overlay.states =
     show:
@@ -415,7 +418,7 @@ list01_name = new TextLayer
 	text: "实际到账"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
-	fontWeight: 400
+	fontWeight: 600
 	letterSpacing: -0.7
 	textAlign: "left"
 	color: "rgba(80,80,80,1)"
@@ -424,7 +427,7 @@ list01_value = new TextLayer
 	parent: list01
 	x: Align.right
 	y: Align.center
-	text: maxNum*Number(costRate)
+	text: maxNum*[1-parseFloat(costRate)*0.01]
 	fontSize: 32*n
 	fontFamily: "PingFang SC"
 	fontWeight: 500
@@ -434,7 +437,7 @@ list01_value = new TextLayer
 	color: "rgba(66,66,66,1)"
 
 
-print parseInt(costRate)
+# print parseFloat(costRate)
 list02 = new Layer
 	parent: proDet
 	y: list01.y+list01.height+1*n
@@ -466,17 +469,17 @@ list02_name = new TextLayer
 	parent: list02
 	x: Align.left
 	y: Align.center(-16*n)
-	text: "年费率"
+	text: "年费综合费率"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
-	fontWeight: 400
+	fontWeight: 600
 	letterSpacing: -0.7
 	textAlign: "left"
 	color: "rgba(80,80,80,1)"
 
 tooltip = new Layer
 	parent: list02
-	x: 90*n
+	x: 180*n
 	y: Align.center(-18*n)
 	width: 44*n
 	height: 44*n
@@ -488,7 +491,7 @@ toast = new Layer
 	width: Screen.width
 	height: 56*n
 	backgroundColor: null
-	x: Align.left(-340*n)
+	x: Align.left(-360*n)
 	y: -56*n
 	scale: 0.2
 	opacity: 0
@@ -525,7 +528,7 @@ toastContent = new TextLayer
 	
 
 toast.states.a =
-	x: Align.left(-112*n)
+	x: Align.left(-198*n)
 	y: -64*n
 	opacity: 0.96
 	scale: 1	
@@ -570,18 +573,18 @@ listheadTitle = new TextLayer
 	x: Align.left(40*n)
 	y: Align.center
 	text: "月还款额"
-	fontSize: 32*n
+	fontSize: 28*n
 	fontFamily: "PingFang SC"
-	fontWeight: 500
+	fontWeight: 300
 	letterSpacing: -0.6
 	textAlign: "left"
-	color: "rgba(33,33,33,1)"
+	color: "#212121"
 
 godetail = new TextLayer
 	parent: listhead
 	x: Align.right(-72*n)
 	y: Align.center
-	text: "查看产品详情"
+	text: "产品详情"
 	fontSize: 28*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
@@ -622,7 +625,7 @@ list03_name = new TextLayer
 	parent: list03
 	x: Align.left
 	y: Align.center
-	text: "1-5期"
+	text: "第1-6期"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
@@ -656,14 +659,14 @@ list04_name = new TextLayer
 	parent: list04
 	x: Align.left
 	y: Align.center
-	text: "6-12期"
+	text: "第7-36期"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
 	letterSpacing: -0.7
 	textAlign: "left"
 	color: "rgba(80,80,80,1)"
-list04.addBlok(1,"#EEE")
+# list04.addBlok(1,"#EEE")
 
 
 
@@ -767,6 +770,33 @@ sheetClose.onTouchEnd (event, layer) ->
 sheetClose.onTouchMove (event, layer) ->
 	@.brightness = 100			
 
+
+scroll.content.on "change:x", ->
+	list01_value.text = (num.text*[1-parseFloat(costRate)*0.01]).toFixed(2)
+	list01_value.x = Align.right
+	list03_value.text = ((num.text/36+num.text*[parseFloat(costRate)*0.01])/4).toFixed(2)
+	list03_value.x = Align.right
+	list04_value.text = ((num.text/36)).toFixed(2)
+	list04_value.x = Align.right
+# 	num.text = 1000-Math.round((scroll.content.x-187*n)/limb.width*10)*100
+# 	num.x = Align.center
+# 	# 如果当前金额大于获取的额度范围则等于最大额度
+# 	if Number(num.text)>maxNum then num.text=maxNum
+# for i in [0...PeriodsArr.length]
+# 	PeriodsBtnArr[i].onTouchStart (event, layer) ->
+# 		print parseInt(@children[1].text)
+
+PeriodsBtnArr[0].onTouchStart (event, layer) ->
+	list03_name.text = "第1-5期"
+	list04_name.text = "第6-12期"
+	
+PeriodsBtnArr[1].onTouchStart (event, layer) ->
+	list03_name.text = "第1-5期"
+	list04_name.text = "第6-24期"
+	
+PeriodsBtnArr[2].onTouchStart (event, layer) ->
+	list03_name.text = "第1-6期"
+	list04_name.text = "第7-36期"		
 
 
 
