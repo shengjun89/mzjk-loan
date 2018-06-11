@@ -335,10 +335,11 @@ sheet.states =
 bottom = new Layer
 	x: 0
 	y: Align.bottom
-	z: 5
+	z: 4
 	backgroundColor: "#FFF"
 	width: Screen.width
 	height: 252*n
+bottom.placeBehind(overlay)
 
 btn = new TextLayer
 	text: "确定借款"
