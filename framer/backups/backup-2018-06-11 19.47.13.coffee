@@ -232,7 +232,7 @@ numRun.start()
 optionsArr = ["租房","就业深造","婚庆","旅行","消费购物","自主创业"]
 sheetTitleArr = ["选择借款用途","请选择时机资金用途，禁止用于购房，投资及各种非消费场景"]
 
-costRate = "11.32%"
+costRate = "23.88%"
 
 
 picker = new Layer
@@ -336,7 +336,7 @@ bottom = new Layer
 	x: 0
 	y: Align.bottom
 	z: 5
-	backgroundColor: "transparent"
+	backgroundColor: "#FFF"
 	width: Screen.width
 	height: 252*n
 
@@ -389,12 +389,17 @@ tips = new TextLayer
 
 
 #product detail
+
+
 proDet = new Layer
 	x: 0
 	y: picker.y+picker.height+8*n
 	backgroundColor: "transparent"
 	width: Screen.width
 	height: 408*n
+
+scrollProDet = ScrollComponent.wrap(proDet)
+
 
 list01 = new Layer
 	parent: proDet
@@ -575,12 +580,12 @@ listheadTitle = new TextLayer
 	x: Align.left(40*n)
 	y: Align.center
 	text: "月还款额"
-	fontSize: 28*n
+	fontSize: 30*n
 	fontFamily: "PingFang SC"
-	fontWeight: 300
+	fontWeight: 600
 	letterSpacing: -0.6
 	textAlign: "left"
-	color: "#212121"
+	color: "rgba(80,80,80,1)"
 
 godetail = new TextLayer
 	parent: listhead
@@ -795,36 +800,35 @@ scroll.content.on "change:x", ->
 	list04_value.x = Align.right
 
 # 	list02_value.text = (parseFloat(costRate)*(1/num.text).toFixed(2)+"%"
-	list02_value.text = (((1/num.text+1/PeriodsNum)*1000+parseFloat(costRate))/3).toFixed(2)+"%"
+	list02_value.text = (23.88-(num.text*0.0001)+1/PeriodsNum).toFixed(2)+"%"
 	list02_value.x = Align.right
-
-
+	
+	
 PeriodsBtnArr[0].onTouchStart (event, layer) ->
-	list02_value.text = (((1/num.text+1/PeriodsNum)*1000+parseFloat(costRate))/3).toFixed(2)+"%"
+
+	list02_value.text = (23.88-(num.text*0.0001)-PeriodsNum*0.01).toFixed(2)+"%"
 	list02_value.x = Align.right
 	list03_name.text = "第1-5期"
 	list04_name.text = "第6-12期"
-	list02_value.text = ((1/num.text+1/PeriodsNum)*1000+parseFloat(costRate)).toFixed(2)+"%"
 	list02_value.x = Align.right
 	list03_value.x = Align.right
 	list04_value.x = Align.right
 	
 PeriodsBtnArr[1].onTouchStart (event, layer) ->
-	list02_value.text = (((1/num.text+1/PeriodsNum)*1000+parseFloat(costRate))/3).toFixed(2)+"%"
+	
+	list02_value.text = (23.88-(num.text*0.0001)-PeriodsNum*0.01).toFixed(2)+"%"
 	list02_value.x = Align.right
 	list03_name.text = "第1-5期"
 	list04_name.text = "第6-24期"
-	list02_value.text = ((1/num.text+1/PeriodsNum)*1000+parseFloat(costRate)).toFixed(2)+"%"
 	list02_value.x = Align.right
 	list03_value.x = Align.right
 	list04_value.x = Align.right
 	
 PeriodsBtnArr[2].onTouchStart (event, layer) ->
-	list02_value.text = (((1/num.text+1/PeriodsNum)*1000+parseFloat(costRate))/3).toFixed(2)+"%"
+	list02_value.text = (23.88-(num.text*0.0001)-PeriodsNum*0.01).toFixed(2)+"%"
 	list02_value.x = Align.right
 	list03_name.text = "第1-6期"
 	list04_name.text = "第7-36期"
-	list02_value.text = ((1/num.text+1/PeriodsNum)*1000+parseFloat(costRate)).toFixed(2)+"%"
 	list02_value.x = Align.right
 	list03_value.x = Align.right
 	list04_value.x = Align.right		

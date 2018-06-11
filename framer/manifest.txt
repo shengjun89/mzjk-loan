@@ -32,27 +32,27 @@ framer/style.css
 framer/framer.generated.js
 framer/coffee-script.js
 framer/framer.init.js
-framer/backups/backup-2018-06-11 13.06.48.coffee
-framer/backups/backup-2018-06-11 12.56.48.coffee
-framer/backups/backup-2018-06-11 13.00.48.coffee
-framer/backups/backup-2018-06-11 12.50.48.coffee
-framer/backups/backup-2018-06-11 13.07.48.coffee
-framer/backups/backup-2018-06-11 12.51.48.coffee
-framer/backups/backup-2018-06-11 13.04.48.coffee
-framer/backups/backup-2018-06-11 12.59.48.coffee
-framer/backups/backup-2018-06-11 15.55.05.coffee
-framer/backups/backup-2018-06-11 12.54.48.coffee
-framer/backups/backup-2018-06-11 15.53.05.coffee
-framer/backups/backup-2018-06-11 12.52.48.coffee
-framer/backups/backup-2018-06-11 13.05.48.coffee
-framer/backups/backup-2018-06-11 12.57.49.coffee
-framer/backups/backup-2018-06-11 12.58.48.coffee
-framer/backups/backup-2018-06-11 15.54.05.coffee
-framer/backups/backup-2018-06-11 13.08.48.coffee
-framer/backups/backup-2018-06-11 17.07.05.coffee
-framer/backups/backup-2018-06-11 12.55.48.coffee
-framer/backups/backup-2018-06-11 13.03.48.coffee
-framer/backups/backup-2018-06-11 12.53.48.coffee
+framer/backups/backup-2018-06-11 19.48.13.coffee
+framer/backups/backup-2018-06-11 19.32.13.coffee
+framer/backups/backup-2018-06-11 19.26.13.coffee
+framer/backups/backup-2018-06-11 19.45.13.coffee
+framer/backups/backup-2018-06-11 19.34.13.coffee
+framer/backups/backup-2018-06-11 19.39.13.coffee
+framer/backups/backup-2018-06-11 19.43.13.coffee
+framer/backups/backup-2018-06-11 19.44.13.coffee
+framer/backups/backup-2018-06-11 19.35.13.coffee
+framer/backups/backup-2018-06-11 19.42.13.coffee
+framer/backups/backup-2018-06-11 19.30.13.coffee
+framer/backups/backup-2018-06-11 19.24.13.coffee
+framer/backups/backup-2018-06-11 19.47.13.coffee
+framer/backups/backup-2018-06-11 19.29.13.coffee
+framer/backups/backup-2018-06-11 19.41.13.coffee
+framer/backups/backup-2018-06-11 19.25.13.coffee
+framer/backups/backup-2018-06-11 19.31.13.coffee
+framer/backups/backup-2018-06-11 19.28.13.coffee
+framer/backups/backup-2018-06-11 19.46.13.coffee
+framer/backups/backup-2018-06-11 19.37.13.coffee
+framer/backups/backup-2018-06-11 19.40.13.coffee
 framer/social-80x80.png
 framer/framer.js
 framer/social-1200x630.png
