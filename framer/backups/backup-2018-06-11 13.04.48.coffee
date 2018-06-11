@@ -223,6 +223,8 @@ scroll.content.on "change:x", ->
 #initial
 numRun = new Animation scroll.content,
     x: -scroll.content.width+375*n+200*n
+    options:
+      time:0.2
 numRun.start()
 
 
@@ -787,33 +789,41 @@ for i in [0...PeriodsArr.length]
 scroll.content.on "change:x", ->
 	list01_value.text = (num.text*[1-parseFloat(costRate)*0.01]).toFixed(2)
 	list01_value.x = Align.right
-	list03_value.text = ((num.text/PeriodsNum+num.text*[parseFloat(costRate)*0.01])/4).toFixed(2)
+	list03_value.text = (((num.text/PeriodsNum)*(1+[parseFloat(costRate)*0.01]))/6).toFixed(2)
 	list03_value.x = Align.right
 	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list04_value.x = Align.right
-
+# 	list02_value.text = (parseFloat(costRate)*(1/num.text).toFixed(2)+"%"
+	list02_value.text = (1/num.text*10000+parseFloat(costRate)).toFixed(2)+"%"
+	list02_value.x = Align.right
 
 
 PeriodsBtnArr[0].onTouchStart (event, layer) ->
+	list02_value.text = (parseFloat(costRate)*(1+num.text)*0.00001).toFixed(2)+"%"
+	list02_value.x = Align.right
 	list03_name.text = "第1-5期"
 	list04_name.text = "第6-12期"
-	list03_value.text = ((num.text/PeriodsNum+num.text*[parseFloat(costRate)*0.01])/4).toFixed(2)
+	list03_value.text = (((num.text/PeriodsNum)*(1+[parseFloat(costRate)*0.01]))/6).toFixed(2)
 	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list03_value.x = Align.right
 	list04_value.x = Align.right
 	
 PeriodsBtnArr[1].onTouchStart (event, layer) ->
+	list02_value.text = (parseFloat(costRate)*(1+num.text)*0.00001).toFixed(2)+"%"
+	list02_value.x = Align.right
 	list03_name.text = "第1-5期"
 	list04_name.text = "第6-24期"
-	list03_value.text = ((num.text/PeriodsNum+num.text*[parseFloat(costRate)*0.01])/4).toFixed(2)
+	list03_value.text = (((num.text/PeriodsNum)*(1+[parseFloat(costRate)*0.01]))/6).toFixed(2)
 	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list03_value.x = Align.right
 	list04_value.x = Align.right
 	
 PeriodsBtnArr[2].onTouchStart (event, layer) ->
+	list02_value.text = (parseFloat(costRate)*(1+num.text)*0.00001).toFixed(2)+"%"
+	list02_value.x = Align.right
 	list03_name.text = "第1-6期"
 	list04_name.text = "第7-36期"
-	list03_value.text = ((num.text/PeriodsNum+num.text*[parseFloat(costRate)*0.01])/4).toFixed(2)
+	list03_value.text = (((num.text/PeriodsNum)*(1+[parseFloat(costRate)*0.01]))/6).toFixed(2)
 	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list03_value.x = Align.right
 	list04_value.x = Align.right		
