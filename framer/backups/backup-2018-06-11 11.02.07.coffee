@@ -140,7 +140,7 @@ topBg = new Layer
 num_title = new TextLayer
 	x: Align.center
 	y: 168*n
-	text: "确认借款金额(元)"
+	text: "确认借多少(元)"
 	fontSize: 32*n
 	fontFamily: "PingFang SC"
 	fontWeight: 300
@@ -228,6 +228,8 @@ numRun.start()
 optionsArr = ["租房","就业深造","婚庆","旅行","消费购物","自主创业"]
 sheetTitleArr = ["选择借款用途","请选择时机资金用途，禁止用于购房，投资及各种非消费场景"]
 
+costRate = "11.32%"
+
 
 picker = new Layer
 	x: 0
@@ -284,6 +286,7 @@ overlay = new Layer
 	backgroundColor: "rgba(0,0,0,0.6)"
 	z: 4
 	opacity: 0
+	y: 2
 	
 overlay.states =
     show:
@@ -422,7 +425,7 @@ list01_value = new TextLayer
 	parent: list01
 	x: Align.right
 	y: Align.center
-	text: "19200"
+	text: maxNum*[1-parseFloat(costRate)*0.01]
 	fontSize: 32*n
 	fontFamily: "PingFang SC"
 	fontWeight: 500
@@ -431,6 +434,8 @@ list01_value = new TextLayer
 	textAlign: "right"
 	color: "rgba(66,66,66,1)"
 
+
+# print parseFloat(costRate)
 list02 = new Layer
 	parent: proDet
 	y: list01.y+list01.height+1*n
@@ -539,7 +544,7 @@ list02_value = new TextLayer
 	parent: list02
 	x: Align.right
 	y: Align.center
-	text: "11.12%"
+	text: costRate
 	fontSize: 32*n
 	fontFamily: "PingFang SC"
 	fontWeight: 500
@@ -705,7 +710,7 @@ for i in [0...optionsArr.length]
 		overlay.animate "default",curve: iOSActionSheet,time: 0.5,delay: 0.4
 		sheet.animate "default",curve: iOSActionSheet,time: 0.5,delay: 0.4
 		pickValue.text = @text
-		pickValue.x = Align.right(-56*n)
+		pickValue.x = Align.right(-64*n)
 		btn.opacity = 1
 		TouchSound.play()
 		
@@ -731,6 +736,15 @@ sheetTitle = new TextLayer
 		
 # 	optionLayer.addBlok(1,"#F5F5F5")	
 	optionLayer.placeBehind(sheetTitle)
+	
+	
+listhead.onTouchStart (event, layer) ->
+	@.brightness = 96		
+listhead.onTouchEnd (event, layer) ->
+	@.brightness = 100
+listhead.onTouchMove (event, layer) ->
+	@.brightness = 100	
+		
 picker.onTouchStart (event, layer) ->
 	@.brightness = 96		
 picker.onTouchEnd (event, layer) ->
@@ -754,6 +768,14 @@ sheetClose.onTouchEnd (event, layer) ->
 sheetClose.onTouchMove (event, layer) ->
 	@.brightness = 100			
 
+
+scroll.content.on "change:x", ->
+	list01_value.text = (num.text*[1-parseFloat(costRate)*0.01]).toFixed(2)
+	list01_value.x = Align.right
+# 	num.text = 1000-Math.round((scroll.content.x-187*n)/limb.width*10)*100
+# 	num.x = Align.center
+# 	# 如果当前金额大于获取的额度范围则等于最大额度
+# 	if Number(num.text)>maxNum then num.text=maxNum
 
 
 

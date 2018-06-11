@@ -140,7 +140,7 @@ topBg = new Layer
 num_title = new TextLayer
 	x: Align.center
 	y: 168*n
-	text: "确认借款金额(元)"
+	text: "确认借多少(元)"
 	fontSize: 32*n
 	fontFamily: "PingFang SC"
 	fontWeight: 300
@@ -286,6 +286,7 @@ overlay = new Layer
 	backgroundColor: "rgba(0,0,0,0.6)"
 	z: 4
 	opacity: 0
+	y: 2
 	
 overlay.states =
     show:
@@ -415,7 +416,7 @@ list01_name = new TextLayer
 	text: "实际到账"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
-	fontWeight: 400
+	fontWeight: 600
 	letterSpacing: -0.7
 	textAlign: "left"
 	color: "rgba(80,80,80,1)"
@@ -466,17 +467,17 @@ list02_name = new TextLayer
 	parent: list02
 	x: Align.left
 	y: Align.center(-16*n)
-	text: "年费率"
+	text: "年费综合费率"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
-	fontWeight: 400
+	fontWeight: 600
 	letterSpacing: -0.7
 	textAlign: "left"
 	color: "rgba(80,80,80,1)"
 
 tooltip = new Layer
 	parent: list02
-	x: 90*n
+	x: 180*n
 	y: Align.center(-18*n)
 	width: 44*n
 	height: 44*n
@@ -525,7 +526,7 @@ toastContent = new TextLayer
 	
 
 toast.states.a =
-	x: Align.left(-112*n)
+	x: Align.left(-198*n)
 	y: -64*n
 	opacity: 0.96
 	scale: 1	
@@ -570,18 +571,18 @@ listheadTitle = new TextLayer
 	x: Align.left(40*n)
 	y: Align.center
 	text: "月还款额"
-	fontSize: 32*n
+	fontSize: 28*n
 	fontFamily: "PingFang SC"
-	fontWeight: 500
+	fontWeight: 300
 	letterSpacing: -0.6
 	textAlign: "left"
-	color: "rgba(33,33,33,1)"
+	color: "#212121"
 
 godetail = new TextLayer
 	parent: listhead
 	x: Align.right(-72*n)
 	y: Align.center
-	text: "查看产品详情"
+	text: "产品详情"
 	fontSize: 28*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
@@ -622,7 +623,7 @@ list03_name = new TextLayer
 	parent: list03
 	x: Align.left
 	y: Align.center
-	text: "1-5期"
+	text: "第1-5期"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
@@ -656,14 +657,14 @@ list04_name = new TextLayer
 	parent: list04
 	x: Align.left
 	y: Align.center
-	text: "6-12期"
+	text: "第6-12期"
 	fontSize: 30*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
 	letterSpacing: -0.7
 	textAlign: "left"
 	color: "rgba(80,80,80,1)"
-list04.addBlok(1,"#EEE")
+# list04.addBlok(1,"#EEE")
 
 
 
