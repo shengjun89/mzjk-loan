@@ -304,6 +304,7 @@ overlay.states =
 	
 # sheetTitle.addBlok(1,"#F5F5F5")
 sheet = new Layer
+	id: "actionSheet"
 	parent: overlay
 	y: Screen.height
 	width: Screen.width
