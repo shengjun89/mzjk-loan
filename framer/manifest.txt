@@ -33,26 +33,26 @@ framer/framer.generated.js
 framer/coffee-script.js
 framer/framer.init.js
 framer/backups/backup-2018-06-11 19.48.13.coffee
-framer/backups/backup-2018-06-11 19.32.13.coffee
+framer/backups/backup-2018-06-12 16.29.34.coffee
+framer/backups/backup-2018-06-12 10.54.20.coffee
 framer/backups/backup-2018-06-11 19.45.13.coffee
 framer/backups/backup-2018-06-11 19.51.13.coffee
-framer/backups/backup-2018-06-11 19.34.13.coffee
-framer/backups/backup-2018-06-11 19.39.13.coffee
-framer/backups/backup-2018-06-11 19.43.13.coffee
-framer/backups/backup-2018-06-11 19.44.13.coffee
+framer/backups/backup-2018-06-12 16.30.34.coffee
+framer/backups/backup-2018-06-11 22.54.26.coffee
+framer/backups/backup-2018-06-12 10.52.20.coffee
+framer/backups/backup-2018-06-12 10.46.20.coffee
 framer/backups/backup-2018-06-11 22.47.26.coffee
-framer/backups/backup-2018-06-11 19.35.13.coffee
-framer/backups/backup-2018-06-11 19.42.13.coffee
 framer/backups/backup-2018-06-11 22.44.26.coffee
 framer/backups/backup-2018-06-11 19.47.13.coffee
-framer/backups/backup-2018-06-11 19.41.13.coffee
+framer/backups/backup-2018-06-14 10.30.23.coffee
+framer/backups/backup-2018-06-12 10.50.20.coffee
 framer/backups/backup-2018-06-11 22.48.26.coffee
-framer/backups/backup-2018-06-11 19.31.13.coffee
 framer/backups/backup-2018-06-11 22.45.26.coffee
 framer/backups/backup-2018-06-11 19.46.13.coffee
-framer/backups/backup-2018-06-11 19.37.13.coffee
-framer/backups/backup-2018-06-11 19.40.13.coffee
+framer/backups/backup-2018-06-12 10.48.20.coffee
+framer/backups/backup-2018-06-12 10.51.20.coffee
 framer/backups/backup-2018-06-11 22.43.26.coffee
+framer/backups/backup-2018-06-12 16.35.34.coffee
 framer/social-80x80.png
 framer/framer.js
 framer/social-1200x630.png
@@ -61,5 +61,7 @@ sounds/Collapse.m4a
 sounds/Tab1.m4a
 sounds/Tab2.m4a
 sounds/Button2.m4a
+modules/adapt/Adapt.coffee
+modules/adapt/module.json
 modules/myModule.coffee
 modules/StatusBar.coffee

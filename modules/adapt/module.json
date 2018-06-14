@@ -1,0 +1,1 @@
+{"author":"Sigurd Mannsåker","dependencies":[],"description":"Breakpoints for Framer, using responsive variables","example":"example-snippet.coffee","github":"https://github.com/sigtm/Framer-Adapt","install":"Adapt.coffee","installed_count":71,"name":"Adapt","require":"{Adapt} = require 'Adapt'","thumb":"adapt-thumbnail.png","unique_name":"adapt"}
