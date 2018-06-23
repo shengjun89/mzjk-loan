@@ -2,6 +2,7 @@
 {StatusBar} = require "StatusBar"
 
 Screen.backgroundColor = "#FFF"
+Canvas.image = "images/bg.jpeg"
 n = Screen.width/750
 StatusBar = new StatusBar
 StatusBar.backgroundColor = null
@@ -360,6 +361,8 @@ btn = new TextLayer
 	lineHeight: 2.4
 	image: "images/btnBg.png"
 	borderRadius: 160*n
+
+btn.isOn = false
 	
 btnShadow = btn.copy()
 btnShadow.parent = btn
@@ -547,8 +550,26 @@ toast.states.a =
 	scale: 1	
 
 
+btnToastCont = toastContent.copy()
+btnToastCont.parent = bottom
+btnToastCont.text = "请先选择怎么用"
+btnToastCont.width = Screen.width-400*n
+btnToastCont.x = Align.center()
+btnToastCont.y = Align.center()
+btnToastCont.opacity = 0
 
+btnToastAnimate = new Animation btnToastCont,
+	y:-12*n
+	opacity: 1
+	options:
+		time: 0.2
+		curve: quick
+btnToastEndAnimate = btnToastAnimate.reverse()
 
+btnToastEndAnimate.options.delay = 1.2
+btnToastAnimate.on Events.AnimationEnd, btnToastEndAnimate.start
+# btnToastEndAnimate.on Events.AnimationEnd, btnToastAnimate.start 
+# btnToastAnimate.start()
 
 tooltip.onTouchStart (event, layer) ->
 # 	toast.animate "a",curve:quick ,time: 0.3
@@ -716,7 +737,9 @@ for i in [0...optionsArr.length]
 		for i in [0...optionsArr.length]
 			optionLayersArr[i].color = "#212121"
 			optionLayersArr[i].image = null
-			
+		#关闭button开关	
+		bottom.children[0].isOn = true
+# 		print bottom.children[0].isOn	
 		@.brightness = 96
 		@.color = "#FF6361"
 		@.image = "images/options_sel.png"
@@ -760,6 +783,7 @@ listhead.onTouchMove (event, layer) ->
 	@.brightness = 100	
 		
 picker.onTouchStart (event, layer) ->
+# 	bottom.children[0].isOn = true
 	@.brightness = 96		
 picker.onTouchEnd (event, layer) ->
 	@.brightness = 100
@@ -769,6 +793,7 @@ picker.onTouchEnd (event, layer) ->
 		optionLayersArr[i].animate "show",curve: iOSActionSheet,time: 0.2,delay:0.08*i+0.04	
 picker.onTouchMove (event, layer) ->
 	@.brightness = 100
+# 	bottom.children[0].isOn = true
 	
 		
 sheetClose.onTouchStart (event, layer) ->
@@ -808,6 +833,7 @@ scroll.content.on "change:x", ->
 	list02_value.text = (23.88-(num.text*0.0001)+1/PeriodsNum).toFixed(2)+"%"
 	list02_value.x = Align.right
 	
+#切换期数事件
 	
 PeriodsBtnArr[0].onTouchStart (event, layer) ->
 
@@ -842,7 +868,15 @@ PeriodsBtnArr[2].onTouchStart (event, layer) ->
 	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list02_value.x = Align.right
 	list03_value.x = Align.right
-	list04_value.x = Align.right		
+	list04_value.x = Align.right	
+
+#未选择怎么用，点击按钮toast提示
+bottom.children[0].onTouchEnd (event, layer) ->
+# 	print 1
+# 	btnToastAnimate.start()
+	if @isOn == false then btnToastAnimate.start()
+# print bottom.children[0].isOn
+# if pickValue.text != "请选择" then bottom.children[0].isOn = true 		
 
 
 

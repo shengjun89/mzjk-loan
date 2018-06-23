@@ -1,22 +1,22 @@
 {
   "orientation" : 0,
   "updateDelay" : 0.29999999999999999,
-  "cachedDeviceHeight" : 1334,
+  "cachedDeviceHeight" : 2560,
   "contentScale" : 1,
-  "cachedDeviceWidth" : 750,
+  "cachedDeviceWidth" : 1440,
   "fullScreen" : false,
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
     "Filters" : false
   },
-  "deviceType" : "apple-iphone-7-black",
+  "deviceType" : "google-nexus-6p",
   "projectId" : "F296FD08-C84F-4B33-B9E2-BA2D10C43F1C",
   "deviceOrientation" : 0,
   "selectedHand" : "",
   "foldedCodeRanges" : [
-    "{1311, 1914}",
-    "{3227, 1890}",
-    "{5119, 12775}"
+    "{1343, 1914}",
+    "{3259, 1890}",
+    "{5151, 13774}"
   ],
   "deviceScale" : "fit"
 }

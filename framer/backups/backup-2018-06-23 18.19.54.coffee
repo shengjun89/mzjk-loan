@@ -232,6 +232,8 @@ numRun.start()
 #列表选择器
 optionsArr = ["租房","就业深造","婚庆","旅行","消费购物","自主创业"]
 sheetTitleArr = ["选择借款用途请选择实际资金用途，禁止用于购房，投资及各种非消费场景"]
+Adapt.picker.enable()
+
 
 costRate = "23.88%"
 
@@ -302,6 +304,7 @@ overlay.states =
 	
 # sheetTitle.addBlok(1,"#F5F5F5")
 sheet = new Layer
+	id: "actionSheet"
 	parent: overlay
 	y: Screen.height
 	width: Screen.width
@@ -357,6 +360,8 @@ btn = new TextLayer
 	lineHeight: 2.4
 	image: "images/btnBg.png"
 	borderRadius: 160*n
+btn.switch = false
+
 	
 btnShadow = btn.copy()
 btnShadow.parent = btn
@@ -544,7 +549,25 @@ toast.states.a =
 	scale: 1	
 
 
+btnToastCont = toastContent.copy()
+btnToastCont.parent = bottom
+btnToastCont.text = "请先选择怎么用"
+btnToastCont.width = Screen.width-400*n
+btnToastCont.x = Align.center()
+btnToastCont.y = Align.center()
+btnToastCont.opacity = 0
 
+btnToastAnimate = new Animation btnToastCont,
+	y:-12*n
+	opacity: 1
+	options:
+		time: 0.2
+		curve: quick
+btnToastEndAnimate = btnToastAnimate.reverse()
+
+btnToastEndAnimate.options.delay = 1.2
+btnToastAnimate.on Events.AnimationEnd, btnToastEndAnimate.start
+# btnToastEndAnimate.on Events.AnimationEnd, btnToastAnimate.start 
 
 
 tooltip.onTouchStart (event, layer) ->
@@ -740,7 +763,7 @@ sheetTitle = new TextLayer
 	fontSize: 26*n
 # 	text: sheetTitleArr[0]
 	color: "#757575"
-	html: "<div style='line-height:1.4;padding-top:12px;'>选择借款用途<br/>请选择实际资金用途，禁止用于购房，投资及各种非消费场景</div>"
+	html: "<div id='sheetTitle' style='line-height:1.4;padding-top:12px;'>选择借款用途<br/>请选择实际资金用途，禁止用于购房，投资及各种非消费场景</div>"
 	lineHeight: 2.2
 	backgroundColor: "#FFF"
 	fontWeight: 300
@@ -805,6 +828,7 @@ scroll.content.on "change:x", ->
 	list02_value.text = (23.88-(num.text*0.0001)+1/PeriodsNum).toFixed(2)+"%"
 	list02_value.x = Align.right
 	
+#切换期数事件
 	
 PeriodsBtnArr[0].onTouchStart (event, layer) ->
 
@@ -839,7 +863,12 @@ PeriodsBtnArr[2].onTouchStart (event, layer) ->
 	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list02_value.x = Align.right
 	list03_value.x = Align.right
-	list04_value.x = Align.right		
+	list04_value.x = Align.right	
+
+#未选择怎么用，点击按钮toast提示
+
+print btn.switch
+		
 
 
 

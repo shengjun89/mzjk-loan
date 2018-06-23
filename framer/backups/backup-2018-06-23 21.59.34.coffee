@@ -1,6 +1,8 @@
+{Adapt} = require "adapt/Adapt"
 {StatusBar} = require "StatusBar"
 
 Screen.backgroundColor = "#FFF"
+Canvas.image = "images/bg.jpeg"
 n = Screen.width/750
 StatusBar = new StatusBar
 StatusBar.backgroundColor = null
@@ -230,7 +232,9 @@ numRun.start()
 
 #列表选择器
 optionsArr = ["租房","就业深造","婚庆","旅行","消费购物","自主创业"]
-sheetTitleArr = ["选择借款用途","请选择实际资金用途，禁止用于购房，投资及各种非消费场景"]
+sheetTitleArr = ["选择借款用途请选择实际资金用途，禁止用于购房，投资及各种非消费场景"]
+Adapt.picker.enable()
+
 
 costRate = "23.88%"
 
@@ -301,10 +305,11 @@ overlay.states =
 	
 # sheetTitle.addBlok(1,"#F5F5F5")
 sheet = new Layer
+	id: "actionSheet"
 	parent: overlay
 	y: Screen.height
 	width: Screen.width
-	height: optionsArr.length*97*n+172*n
+	height: optionsArr.length*97*n+200*n
 	backgroundColor: "#EEE"
 	z: 5
 	opacity: 0
@@ -356,6 +361,8 @@ btn = new TextLayer
 	lineHeight: 2.4
 	image: "images/btnBg.png"
 	borderRadius: 160*n
+
+btn.isOn = false
 	
 btnShadow = btn.copy()
 btnShadow.parent = btn
@@ -543,8 +550,26 @@ toast.states.a =
 	scale: 1	
 
 
+btnToastCont = toastContent.copy()
+btnToastCont.parent = bottom
+btnToastCont.text = "请先选择怎么用"
+btnToastCont.width = Screen.width-400*n
+btnToastCont.x = Align.center()
+btnToastCont.y = Align.center()
+btnToastCont.opacity = 0
 
+btnToastAnimate = new Animation btnToastCont,
+	y:-12*n
+	opacity: 1
+	options:
+		time: 0.2
+		curve: quick
+btnToastEndAnimate = btnToastAnimate.reverse()
 
+btnToastEndAnimate.options.delay = 1.2
+btnToastAnimate.on Events.AnimationEnd, btnToastEndAnimate.start
+# btnToastEndAnimate.on Events.AnimationEnd, btnToastAnimate.start 
+# btnToastAnimate.start()
 
 tooltip.onTouchStart (event, layer) ->
 # 	toast.animate "a",curve:quick ,time: 0.3
@@ -687,7 +712,7 @@ for i in [0...optionsArr.length]
 		parent: sheet
 		width: Screen.width
 		height: 96*n
-		y: 97*n*i+65*n+64*n
+		y: 97*n*i+65*n+92*n
 		fontSize: 32*n
 		fontWeight: 400
 		color: "#212121"
@@ -700,7 +725,7 @@ for i in [0...optionsArr.length]
 	optionLayersArr.push(optionLayer)
 	optionLayer.states =
 		show:
-			y: 97*n*i+65*n
+			y: 97*n*i+92*n
 			opacity: 1
 			options:
 				time:0.5
@@ -712,7 +737,9 @@ for i in [0...optionsArr.length]
 		for i in [0...optionsArr.length]
 			optionLayersArr[i].color = "#212121"
 			optionLayersArr[i].image = null
-			
+		#关闭button开关	
+		bottom.children[0].isOn = true
+# 		print bottom.children[0].isOn	
 		@.brightness = 96
 		@.color = "#FF6361"
 		@.image = "images/options_sel.png"
@@ -735,10 +762,11 @@ for i in [0...optionsArr.length]
 sheetTitle = new TextLayer
 	parent: sheet
 	width: Screen.width
-	height: 64*n
-	fontSize: 28*n
-	text: sheetTitleArr[0]
+	height: 90*n
+	fontSize: 26*n
+# 	text: sheetTitleArr[0]
 	color: "#757575"
+	html: "<div id='sheetTitle' style='line-height:1.4;padding-top:12px;'>选择借款用途<br/>请选择实际资金用途，禁止用于购房，投资及各种非消费场景</div>"
 	lineHeight: 2.2
 	backgroundColor: "#FFF"
 	fontWeight: 300
@@ -755,6 +783,7 @@ listhead.onTouchMove (event, layer) ->
 	@.brightness = 100	
 		
 picker.onTouchStart (event, layer) ->
+# 	bottom.children[0].isOn = true
 	@.brightness = 96		
 picker.onTouchEnd (event, layer) ->
 	@.brightness = 100
@@ -764,6 +793,7 @@ picker.onTouchEnd (event, layer) ->
 		optionLayersArr[i].animate "show",curve: iOSActionSheet,time: 0.2,delay:0.08*i+0.04	
 picker.onTouchMove (event, layer) ->
 	@.brightness = 100
+# 	bottom.children[0].isOn = true
 	
 		
 sheetClose.onTouchStart (event, layer) ->
@@ -803,6 +833,7 @@ scroll.content.on "change:x", ->
 	list02_value.text = (23.88-(num.text*0.0001)+1/PeriodsNum).toFixed(2)+"%"
 	list02_value.x = Align.right
 	
+#切换期数事件
 	
 PeriodsBtnArr[0].onTouchStart (event, layer) ->
 
@@ -837,7 +868,15 @@ PeriodsBtnArr[2].onTouchStart (event, layer) ->
 	list04_value.text = ((num.text/PeriodsNum)).toFixed(2)
 	list02_value.x = Align.right
 	list03_value.x = Align.right
-	list04_value.x = Align.right		
+	list04_value.x = Align.right	
+
+#未选择怎么用，点击按钮toast提示
+bottom.children[0].onTouchEnd (event, layer) ->
+# 	print 1
+# 	btnToastAnimate.start()
+	if @isOn == false then btnToastAnimate.start()
+# print bottom.children[0].isOn
+# if pickValue.text != "请选择" then bottom.children[0].isOn = true 		
 
 
 
