@@ -374,13 +374,18 @@ mention = new TextLayer
 	parent: bottom
 	x: Align.center
 	y: 124*n
-	text: "本人承诺非在校学生"
+# 	text: "本人承诺非在校学生"
 	fontSize: 22*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
 	lineHeight: 1.6363636363636365
 	textAlign: "left"
 	color: "rgba(189,189,189,1)"
+	html: "<a href='https://insights.hotjar.com/s?siteId=911390&surveyId=69913'>问卷调研测试</a>'"
+
+
+mention.onClick (event, layer) ->
+	
 
 tips = new TextLayer
 	parent: bottom

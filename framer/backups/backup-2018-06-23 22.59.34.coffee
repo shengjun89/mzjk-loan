@@ -2,6 +2,7 @@
 {StatusBar} = require "StatusBar"
 
 Screen.backgroundColor = "#FFF"
+Canvas.image = "images/bg.jpeg"
 n = Screen.width/750
 StatusBar = new StatusBar
 StatusBar.backgroundColor = null
@@ -361,7 +362,7 @@ btn = new TextLayer
 	image: "images/btnBg.png"
 	borderRadius: 160*n
 
-btn
+btn.isOn = false
 	
 btnShadow = btn.copy()
 btnShadow.parent = btn
@@ -373,13 +374,14 @@ mention = new TextLayer
 	parent: bottom
 	x: Align.center
 	y: 124*n
-	text: "本人承诺非在校学生"
+# 	text: "本人承诺非在校学生"
 	fontSize: 22*n
 	fontFamily: "PingFang SC"
 	fontWeight: 400
 	lineHeight: 1.6363636363636365
 	textAlign: "left"
 	color: "rgba(189,189,189,1)"
+	html: "<a href='https://insights.hotjar.com/s?siteId=911390&surveyId=69913'>问卷调研测试</a>'"
 
 tips = new TextLayer
 	parent: bottom
@@ -736,7 +738,9 @@ for i in [0...optionsArr.length]
 		for i in [0...optionsArr.length]
 			optionLayersArr[i].color = "#212121"
 			optionLayersArr[i].image = null
-			
+		#关闭button开关	
+		bottom.children[0].isOn = true
+# 		print bottom.children[0].isOn	
 		@.brightness = 96
 		@.color = "#FF6361"
 		@.image = "images/options_sel.png"
@@ -780,6 +784,7 @@ listhead.onTouchMove (event, layer) ->
 	@.brightness = 100	
 		
 picker.onTouchStart (event, layer) ->
+# 	bottom.children[0].isOn = true
 	@.brightness = 96		
 picker.onTouchEnd (event, layer) ->
 	@.brightness = 100
@@ -789,6 +794,7 @@ picker.onTouchEnd (event, layer) ->
 		optionLayersArr[i].animate "show",curve: iOSActionSheet,time: 0.2,delay:0.08*i+0.04	
 picker.onTouchMove (event, layer) ->
 	@.brightness = 100
+# 	bottom.children[0].isOn = true
 	
 		
 sheetClose.onTouchStart (event, layer) ->
@@ -866,9 +872,12 @@ PeriodsBtnArr[2].onTouchStart (event, layer) ->
 	list04_value.x = Align.right	
 
 #未选择怎么用，点击按钮toast提示
-
-print bottom.children[0].isOn
-		
+bottom.children[0].onTouchEnd (event, layer) ->
+# 	print 1
+# 	btnToastAnimate.start()
+	if @isOn == false then btnToastAnimate.start()
+# print bottom.children[0].isOn
+# if pickValue.text != "请选择" then bottom.children[0].isOn = true 		
 
 
 
